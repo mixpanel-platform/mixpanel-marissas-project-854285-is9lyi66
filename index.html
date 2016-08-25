@@ -18,21 +18,6 @@
     </div>
     <div id="table"></div>
     <script>
-      var json_to_csv = new json2csv();
-      var propSelect;
-      var last_response = undefined;
-      var eventTable  = $('#table').MPTable({
-        showPercentages: false,
-        firstColHeader: 'Match_key'
-      });
-      var options = {items: []};
-      
-      $("body").delegate( "#csv_export", "click", function() {
-          var csv = "data:text/csv;charset=utf-8," + json_to_csv.jsonToCSV(last_response);
-          window.open(encodeURI(csv));
-      });
-
-      
        MP.api.query('/api/2.0/engage/properties/').done(function(json) {
         _.each(json.results, function(v,k) {
           options.items.push({label: k, value: k});
